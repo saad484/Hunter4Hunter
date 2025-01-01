@@ -1,3 +1,5 @@
 # Hunter4Hunter
 
-![alt text](Hunter_Association_logo.png)
+<p align="center">
+    <img src="Hunter_Association_logo.png" alt="alt text">
+</p>
