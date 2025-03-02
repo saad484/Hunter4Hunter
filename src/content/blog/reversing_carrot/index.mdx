@@ -1,0 +1,116 @@
+---
+title: "Carrot - CTF Writeup (Reverse Engineering)"
+description: "A walkthrough of the 'Carrot' challenge in the Reverse Engineering category."
+date: 2025-03-02
+tags: ["CTF", "Reverse Engineering", "Security", "Writeup"]
+image: "./carrot-banner.png"
+authors: ["Saad AIDDI"]
+---
+
+## 🥕 Carrot - Reverse Engineering CTF Writeup
+
+> **Written by:** Saad484
+
+### 📝 Challenge Overview
+- **Category:** Reverse Engineering
+- **Difficulty:** Medium
+- **Binary Type:** ELF 64-bit, PIE, dynamically linked, stripped
+- **Tools Used:** `strings`, `Ghidra`, `objdump`, `ptrace()`
+
+### 🔎 Binary Analysis
+The given binary `carrot` is a **64-bit ELF executable** with **PIE (Position Independent Executable)** enabled, making address randomization harder for attackers. Running `strings` gives us some interesting outputs, including **URLs** and **cURL commands**, which indicate possible **web requests** being made by the malware.
+
+#### **Inspecting the Binary in Ghidra**
+After loading the binary in **Ghidra**, we notice that **no main function** appears in the symbol tree:
+
+{/*
+This code snippet is part of the blog post located at /c:/Users/HP/Projects/Hunter4Hunter/astro-erudite/src/content/blog/revesing_carrot/index.mdx.
+It includes an image with the alt text "Main function not found" and the source path /images/ghidra-no-main.png.
+![Main function not found](/images/ghidra-no-main.png)
+*/}
+
+### 🔑 Finding the Main Function
+To locate the `main()` function:
+1. Navigate to **entry function** in Ghidra.
+2. Look for the call to `__libc_start_main()`.
+3. The first argument to `__libc_start_main()` is usually the `main()` function.
+4. Rename it in Ghidra for easier reference.
+
+#### **Decompiled Code of Main Function**
+```c
+undefined4 main(void) {
+  int iVar1;
+  char *__s1;
+  RSA *r;
+  size_t sVar2;
+  char *__ptr;
+  void *__ptr_00;
+  undefined8 extraout_RAX;
+  undefined4 uVar3;
+  long in_FS_OFFSET;
+  undefined4 local_68;
+  undefined4 local_64;
+  uchar local_60 [16];
+  uchar local_50 [16];
+  long local_40;
+  
+  local_40 = *(long *)(in_FS_OFFSET + 0x28);
+  iVar1 = FUN_00103531();
+  if (((((((iVar1 == 0) && (iVar1 = FUN_0010371a(), iVar1 == 0)) &&
+            (iVar1 = FUN_00103773(), iVar1 == 0)) &&
+           ((iVar1 = FUN_0010356f(), iVar1 == 0 && (iVar1 = FUN_00103622(), iVar1 == 0)))) &&
+          ((iVar1 = FUN_001037da(), iVar1 != 0 &&
+           ((iVar1 = FUN_001032b6(), iVar1 != 0 && (iVar1 = FUN_00103378(), iVar1 == 0)))))) &&
+        (iVar1 = FUN_00103503(), iVar1 != 0)) &&
+       ((iVar1 = FUN_00102c87(), iVar1 == 0 && (iVar1 = FUN_00102c5a(), 1 < iVar1)))) {
+     __s1 = (char *)FUN_00102793();
+     if ((__s1 == (char *)0x0) || (iVar1 = strcmp(__s1,"www"), iVar1 != 0)) {
+        FUN_001038fc();
+     }
+     else {
+        free(__s1);
+        __s1 = (char *)FUN_00102c9f();
+        if (__s1 == (char *)0x0) goto LAB_00102519;
+        r = (RSA *)FUN_00102d99();
+        if (r != (RSA *)0x0) {
+           iVar1 = RAND_bytes(local_60,0x10);
+           if (iVar1 != 0) {
+              iVar1 = RAND_bytes(local_50,0x10);
+              if (iVar1 != 0) {
+                 sVar2 = strlen(__s1);
+                 __ptr = (char *)FUN_00102dd6(__s1,sVar2 & 0xffffffff,local_60,local_50,&local_68);
+                 free(__s1);
+                 if (__ptr == (char *)0x0) {
+                    RSA_free(r);
+                    goto LAB_00102519;
+                 }
+                 __ptr_00 = (void *)FUN_00102ecd(r,local_60,&local_64);
+                 RSA_free(r);
+                 __s1 = __ptr;
+                 if (__ptr_00 != (void *)0x0) {
+                    FUN_00103029(__ptr,local_68,__ptr_00,local_64,local_50,0x10,local_60,extraout_RAX);
+                    free(__ptr);
+                    free(__ptr_00);
+                    uVar3 = 0;
+                    goto LAB_0010260d;
+                 }
+                 goto LAB_00102514;
+              }
+           }
+           RSA_free(r);
+        }
+     }
+LAB_00102514:
+     free(__s1);
+  }
+  else {
+     FUN_001038fc();
+  }
+LAB_00102519:
+  uVar3 = 1;
+LAB_0010260d:
+  if (local_40 == *(long *)(in_FS_OFFSET + 0x28)) {
+     return uVar3;
+  }
+  __stack_chk_fail();
+}
