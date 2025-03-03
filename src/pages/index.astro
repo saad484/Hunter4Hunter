@@ -26,10 +26,10 @@ const blog = (await getCollection('blog'))
     <section>
       <Card>
         <CardHeader>
-          <CardTitle class="text-3xl font-extrabold tracking-tight">
+          <CardTitle className="text-3xl font-extrabold tracking-tight">
             Saad484
           </CardTitle>
-          <CardDescription class="text-lg font-semibold">
+          <CardDescription className="text-lg font-semibold">
             "Exploring Security, Reverse Engineering & CTFs"
           </CardDescription>
         </CardHeader>
@@ -44,16 +44,16 @@ const blog = (await getCollection('blog'))
 
           <div class="mt-4 flex space-x-4">
             <Link href="https://github.com/saad484" class="text-foreground" external>
-              <FaGithub class="w-6 h-6 hover:text-gray-400 transition" />
+              <FaGithub className="w-6 h-6 hover:text-gray-400 transition" />
             </Link>
             <Link href="https://linkedin.com/in/saad-aiddi" class="text-foreground" external>
-              <FaLinkedin class="w-6 h-6 hover:text-blue-400 transition" />
-            </Link>
-            <Link href="https://twitter.com/Saad484" class="text-foreground" external>
-              <FaTwitter class="w-6 h-6 hover:text-blue-300 transition" />
+              <FaLinkedin className="w-6 h-6 hover:text-blue-400 transition" /> 
             </Link>
             <Link href="https://discord.gg/794291498836819979" class="text-foreground" external>
-              <FaDiscord class="w-6 h-6 hover:text-indigo-400 transition" />
+              <FaDiscord className="w-6 h-6 hover:text-blue-400 transition" />
+            </Link>
+            <Link href="https://twitter.com/saad484" class="text-foreground" external>
+                  <FaTwitter className="w-6 h-6 hover:text-blue-400 transition" />
             </Link>
           </div>
         </CardContent>
@@ -61,7 +61,7 @@ const blog = (await getCollection('blog'))
     </section>
 
     <section class="flex flex-col gap-y-4">
-      <h2 class="text-2xl font-bold">📝 Latest Posts</h2>
+      <h2 class="text-2xl font-bold">Latest Posts</h2>
       <ul class="not-prose flex flex-col gap-y-4">
         {
           blog.map((post) => (
