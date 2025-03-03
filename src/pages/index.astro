@@ -13,6 +13,7 @@ import {
 import { SITE } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
 import { getCollection } from 'astro:content'
+import { FaGithub, FaLinkedin, FaDiscord, FaTwitter } from 'react-icons/fa'
 
 const blog = (await getCollection('blog'))
   .filter((post) => !post.data.draft)
@@ -25,55 +26,42 @@ const blog = (await getCollection('blog'))
     <section>
       <Card>
         <CardHeader>
-          <CardTitle className="text-3xl">er·u·dite</CardTitle>
-          <CardDescription
-            >/ˈer(y)əˌdīt/ &bull; <span class="font-semibold">adjective</span
-            ></CardDescription
-          >
+          <CardTitle class="text-3xl font-extrabold tracking-tight">
+            Saad484
+          </CardTitle>
+          <CardDescription class="text-lg font-semibold">
+            "Exploring Security, Reverse Engineering & CTFs"
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <p class="mb-2 text-sm text-muted-foreground">
-            astro-erudite is an opinionated, no-frills static blogging template
-            built with <Link
-              href="https://astro.build"
-              class="text-foreground"
-              external
-              underline>Astro</Link
-            >, <Link
-              href="https://tailwindcss.com"
-              class="text-foreground"
-              external
-              underline>Tailwind</Link
-            >, and <Link
-              href="https://ui.shadcn.com"
-              class="text-foreground"
-              external
-              underline>shadcn/ui</Link
-            >. Extraordinarily loosely based on the <Link
-              href="https://astro-micro.vercel.app/"
-              class="text-foreground"
-              external
-              underline>Astro Micro</Link
-            > theme.
+            Welcome to my blog! I share **CTF writeups, cybersecurity research, and technical deep-dives** into security topics.  
+            Whether you're a hacker, researcher, or just someone curious about security, you're in the right place.
           </p>
           <p class="text-sm text-muted-foreground">
-            To use this template, check out the <Link
-              href="https://github.com/jktrn/astro-erudite"
-              class="text-foreground"
-              underline
-              external>GitHub</Link
-            > repository. To learn more about why this template exists, read this
-            blog post: <Link
-              href="/blog/the-state-of-static-blogs"
-              class="text-foreground"
-              underline>The State of Static Blogs in 2024</Link
-            >.
+            Feel free to connect with me or check out my work:
           </p>
+
+          <div class="mt-4 flex space-x-4">
+            <Link href="https://github.com/saad484" class="text-foreground" external>
+              <FaGithub class="w-6 h-6 hover:text-gray-400 transition" />
+            </Link>
+            <Link href="https://linkedin.com/in/saad-aiddi" class="text-foreground" external>
+              <FaLinkedin class="w-6 h-6 hover:text-blue-400 transition" />
+            </Link>
+            <Link href="https://twitter.com/Saad484" class="text-foreground" external>
+              <FaTwitter class="w-6 h-6 hover:text-blue-300 transition" />
+            </Link>
+            <Link href="https://discord.gg/794291498836819979" class="text-foreground" external>
+              <FaDiscord class="w-6 h-6 hover:text-indigo-400 transition" />
+            </Link>
+          </div>
         </CardContent>
       </Card>
     </section>
+
     <section class="flex flex-col gap-y-4">
-      <h2 class="text-2xl font-bold">Latest posts</h2>
+      <h2 class="text-2xl font-bold">📝 Latest Posts</h2>
       <ul class="not-prose flex flex-col gap-y-4">
         {
           blog.map((post) => (
