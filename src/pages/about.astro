@@ -6,6 +6,7 @@ import ProjectCard from '@/components/ProjectCard.astro'
 import { SITE } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
 import { getCollection } from 'astro:content'
+import { FaGithub, FaLinkedin, FaDiscord, FaTwitter } from 'react-icons/fa'
 
 const projects = await getCollection('projects')
 ---
@@ -18,33 +19,35 @@ const projects = await getCollection('projects')
       <div class="min-w-full">
         <div class="prose prose-neutral mb-8 dark:prose-invert">
           <p class="mb-4">
-            astro-erudite is an opinionated, no-frills static blogging template
-            that prioritizes simplicity and performance, built with <Link
-              href="https://astro.build"
-              class="text-foreground"
-              external
-              underline>Astro</Link
-            >, <Link
-              href="https://tailwindcss.com"
-              class="text-foreground"
-              external
-              underline>Tailwind</Link
-            >, and <Link
-              href="https://ui.shadcn.com"
-              class="text-foreground"
-              external
-              underline>shadcn/ui</Link
-            >. It provides a clean foundation for your content while being
-            extremely easy to customize.
+            Hey! I'm <strong>Saad AIDDI</strong>, a passionate  cybersecurity security engineer.
+            This blog is my personal space where I share insights on cybersecurity, 
+            CTF (Capture The Flag) write-ups, and deep dives into programming concepts.
           </p>
-          <p>
-            To learn more about the philosophy behind this template, check out
-            the following blog post: <Link
-              href="/blog/the-state-of-static-blogs"
-              class="text-foreground"
-              underline>The State of Static Blogs in 2024</Link
-            >.
+           <p class="mb-4">
+            I have experience in **full-stack development**, working with technologies like 
+            <strong>JavaScript, React, Angular, Spring Boot, and Laravel</strong>. 
           </p>
+          <p class="mb-4">
+            Through this blog, I aim to document my journey, share knowledge, and help others
+            navigate the world of **security, programming, and automation**.
+          </p>
+        </div>
+
+        <div class="mt-4 mb-4 flex space-x-4">
+            <Link href="https://github.com/saad484" class="text-foreground" external>
+              <FaGithub className="w-6 h-6 hover:text-gray-400 transition" />
+            </Link>
+            <Link href="https://linkedin.com/in/saad-aiddi" class="text-foreground" external>
+              <FaLinkedin className="w-6 h-6 hover:text-blue-400 transition" /> 
+            </Link>
+            <Link href="https://discord.gg/794291498836819979" class="text-foreground" external>
+              <FaDiscord className="w-6 h-6 hover:text-blue-400 transition" />
+            </Link>
+            <Link href="https://twitter.com/saad484" class="text-foreground" external>
+                  <FaTwitter className="w-6 h-6 hover:text-blue-400 transition" />
+            </Link>
+          </div>
+        <div>
         </div>
 
         <h2 class="mb-4 text-2xl font-semibold">Example Projects Listing</h2>
