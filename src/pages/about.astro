@@ -7,6 +7,14 @@ import { SITE } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
 import { getCollection } from 'astro:content'
 import { FaGithub, FaLinkedin, FaDiscord, FaTwitter } from 'react-icons/fa'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
+
 
 const projects = await getCollection('projects')
 ---
@@ -16,9 +24,11 @@ const projects = await getCollection('projects')
     <Breadcrumbs items={[{ label: 'About', icon: 'lucide:info' }]} />
 
     <section>
+    <Card>
+      <CardContent>
       <div class="min-w-full">
         <div class="prose prose-neutral mb-8 dark:prose-invert">
-          <p class="mb-4">
+          <p class="mb-4 mt-4">
             Hey! I'm <strong>Saad AIDDI</strong>, a passionate  cybersecurity security engineer.
             This blog is my personal space where I share insights on cybersecurity, 
             CTF (Capture The Flag) write-ups, and deep dives into programming concepts.
@@ -49,6 +59,10 @@ const projects = await getCollection('projects')
           </div>
         <div>
         </div>
+      </CardContent>
+    </Card>
+      </section>
+      <section>
 
         <h2 class="mb-4 text-2xl font-semibold">Example Projects Listing</h2>
         <div class="flex flex-col gap-4">
