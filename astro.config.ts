@@ -22,7 +22,7 @@ import 'dotenv/config'; // Load environment variables
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://astro-erudite.vercel.app',
+  site: 'https://hunter4hunter.vercel.app',
   integrations: [
     tailwind({
       applyBaseStyles: false,
