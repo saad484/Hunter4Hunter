@@ -1,0 +1,28 @@
+.notion-header,
+.notion-page-icon,
+.notion-collection-header,
+.notion-nav-header,
+.notion-topbar,
+.notion-search,
+.notion-hash-link {
+  display: none !important;
+}
+
+/* Hide page icon, cover and toolbar */
+.notion-record-icon,
+.notion-page-controls,
+.notion-cover {
+  display: none !important;
+
+}
+
+/* Expand content width */
+.notion {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+.notion-page,
+.notion-page-content {
+  width: 100% !important;
+} 

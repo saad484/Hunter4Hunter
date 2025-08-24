@@ -1,0 +1,10 @@
+---
+import Layout from '@/layouts/Layout.astro'
+---
+
+<Layout title="All Write-ups (Live Notion View)" description="Embedded live Notion database table of write-ups">
+  <section class="w-[90%] mx-auto px-6 py-10">
+    <h1 class="mb-6 text-center text-4xl font-extrabold">All Write-ups (Live)</h1>
+    <NotionPage client:react pageId="255827ba6d7680fa8392f90996c6d660" />
+  </section>
+</Layout>

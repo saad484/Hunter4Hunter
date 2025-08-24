@@ -1,0 +1,25 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { fetchWriteupMeta } from '@/lib/notion-writeups'
+const posts = await fetchWriteupMeta()
+---
+
+<Layout title="Hack-The-Box Write-ups" description="HTB machine write-ups fetched from Notion">
+  <section class="mx-auto max-w-3xl space-y-4 px-4 py-8">
+    <h1 class="text-center text-4xl font-bold">HTB Write-ups</h1>
+    <ul class="space-y-2">
+      {posts.map(p => (
+        <li>
+          <a href={`/writeups/${p.slug}`} class="text-primary hover:underline">
+            {p.title}
+          </a>
+          {p.date && (
+            <time datetime={p.date} class="ml-2 text-sm text-muted-foreground">
+              {new Date(p.date).toLocaleDateString()}
+            </time>
+          )}
+        </li>
+      ))}
+    </ul>
+  </section>
+</Layout>
