@@ -36,6 +36,6 @@ blog/
 
 - **LinkedIn:** [linkedin.com/in/saad-aiddi](https://linkedin.com/in/saad-aiddi)
 - **GitHub:** [github.com/saad484](https://github.com/saad484)
-- **Twitter:** [@Saad484](https://twitter.com/saad484)
+- **Twitter:** [@Saad484](https://twitter.com/aiddi_saad)
 
 🚀 **Happy Hacking & Learning!** 🏴‍☠️
